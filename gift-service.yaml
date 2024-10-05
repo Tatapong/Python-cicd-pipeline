@@ -6,5 +6,7 @@ spec:
   selector:
     app: myapp
   ports:
-  - port: 8080
-    targetPort: 8081
+  - port: 8080          # Service port to be exposed
+    targetPort: 8081     # Pod's internal port
+    nodePort: 30080      # External port on each node (accessible outside the cluster)
+  type: NodePort         # Exposes the service on a port outside the Kubernetes cluster
