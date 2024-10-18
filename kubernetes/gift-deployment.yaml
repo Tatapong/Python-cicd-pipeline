@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2  # Number of replicas of the pod
+  selector:
+    matchLabels:
+      app: myapp  # Label selector to associate the deployment with the pods
+  template:
+    metadata:
+      labels:
+        app: myapp  # Label the pod with the same label as the deployment selector
+    spec:
+      containers:
+      - name: myapp-container
+        image: tatapong/cicd-project-repo:success  # The image from Docker Hub
+        ports:
+        - containerPort: 8081  # Port exposed inside the container
